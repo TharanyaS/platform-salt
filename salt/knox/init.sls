@@ -81,6 +81,7 @@ knox-init-authentication:
     - group: knox
     - require:
       - file: knox-master-secret-script
+    - unless: test -f {{ release_directory }}/knox/data/security/master
 {% endif %}
 
 knox-set-configuration:
