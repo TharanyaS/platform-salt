@@ -102,7 +102,7 @@ def get_public_addresses(role):
     """Returns public ip addresses of minions having a specific role"""
     query = "G@pnda_cluster:{} and G@roles:{}".format(cluster_name(), role)
     result = __salt__['mine.get'](query, 'grains.items', 'compound').values()
-    result = result[0]['ec2']['public_ipv4']
+    result = [result[0]['ec2']['public_ipv4']]
     return result if len(result) > 0 else None
 
 def generate_http_link(role, suffix):
